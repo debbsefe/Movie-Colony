@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../core/notifiers/generic_state.dart';
 import '../../../../core/widgets/snackbars.dart';
-
 import '../../../../providers.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -19,9 +19,9 @@ class _SignUpPageState extends State<SignUpPage> with CustomSnackbar {
   Widget build(BuildContext context) {
     return ProviderListener(
         provider: googleSignInProvider,
-        onChange: (context, GenericState<void> counter) {
-          if (counter is Error<void>) {
-            showErrorSnackBar(_scaffoldKey, counter.message);
+        onChange: (context, GenericState<void> change) {
+          if (change is Error<void>) {
+            showErrorSnackBar(_scaffoldKey, change.message);
           }
         },
         child: Scaffold(

@@ -13,6 +13,7 @@ class TvSummary extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final tvDetail = watch(tvDetailProvider);
+    final notificationList = watch(notifListStreamProvider).data;
 
     return tvDetail.when(
         initial: () => Container(),
@@ -21,6 +22,9 @@ class TvSummary extends ConsumerWidget {
         loaded: (detail) {
           String overview = detail!.overview ?? '';
           var categories = detail.categories ?? [];
+          bool contain = (() {
+            return notificationList!.value.any((e) => e.id == detail.id);
+          })();
           return Container(
             margin: const EdgeInsets.symmetric(
               horizontal: 16,
@@ -71,25 +75,26 @@ class TvSummary extends ConsumerWidget {
                     );
                   }).toList(),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
-                  child: CustomButton(
-                    onPressed: () {
-                      context
-                          .read(addNotificationListProvider.notifier)
-                          .addNotification(
-                            NotificationListModel(
-                              id: detail.id,
-                              name: detail.name,
-                              rating: detail.rating,
-                              date: detail.startDate,
-                              posterImage: detail.posterImage,
-                            ),
-                          );
-                    },
-                    name: 'Notify Me',
-                  ),
-                )
+                if (!contain)
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                    child: CustomButton(
+                      onPressed: () {
+                        context
+                            .read(addNotificationListProvider.notifier)
+                            .addNotification(
+                              NotificationListModel(
+                                id: detail.id,
+                                name: detail.name,
+                                rating: detail.rating,
+                                date: detail.startDate,
+                                posterImage: detail.posterImage,
+                              ),
+                            );
+                      },
+                      name: 'Notify Me',
+                    ),
+                  )
               ],
             ),
           );

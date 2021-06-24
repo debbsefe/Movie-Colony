@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app_router.gr.dart';
 import 'core/cache/app_cache.dart';
@@ -24,7 +23,7 @@ void main() async {
   );
 }
 
-class MovieColony extends HookWidget {
+class MovieColony extends ConsumerWidget {
   MovieColony({
     Key? key,
   }) : super(key: key);
@@ -33,11 +32,11 @@ class MovieColony extends HookWidget {
   final _appRouter = AppRouter();
 
   @override
-  Widget build(BuildContext context) {
-    final theme = useProvider(themeProvider);
+  Widget build(BuildContext context, ScopedReader watch) {
+    final theme = watch(themeProvider);
 
     var isFirstTime = prefs.retrieveBool(Strings.firstTimeUser);
-    var user = useProvider(userChangesProvider).data?.value;
+    var user = watch(userChangesProvider).data?.value;
 
     return MaterialApp.router(
         debugShowCheckedModeBanner: false,

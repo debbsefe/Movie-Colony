@@ -14,6 +14,8 @@ import 'features/categories/domain/entities/categories.dart';
 import 'features/categories/presentation/notifiers/categories_notifier.dart';
 import 'features/configuration/domain/entities/configuration.dart';
 import 'features/configuration/presentation/notifiers/configuration_notifier.dart';
+import 'features/notification/data/models/notification_list_model.dart';
+import 'features/notification/domain/repositories/notif_list_repository.dart';
 import 'features/notification/presentation/notifiers/add_notif_list_notifier.dart';
 import 'features/single_tv/presentation/notifiers/similar_tv/similar_tv_notifier.dart';
 import 'features/single_tv/presentation/notifiers/tv_cast/tv_cast_notifier.dart';
@@ -36,8 +38,16 @@ final anonymousSignInProvider =
 final firebaseAuthProvider =
     Provider<FirebaseAuth>((ref) => FirebaseAuth.instance);
 
-final userChangesProvider = StreamProvider<User?>(
+final userChangesProvider = StreamProvider.autoDispose<User?>(
     (ref) => ref.watch(firebaseAuthProvider).userChanges());
+
+final notifListProvider = Provider<NotifListRepository>((ref) {
+  return di.sl<NotifListRepository>();
+});
+final notifListStreamProvider =
+    StreamProvider.autoDispose<List<NotificationListModel>>((ref) {
+  return ref.watch(notifListProvider).notificationList();
+});
 
 ///theme
 final themeProvider = StateNotifierProvider<CustomTheme, ThemeData>((ref) {

@@ -1,6 +1,5 @@
 import '../../../../core/error/exception.dart';
 import '../../../../core/firebase_methods.dart';
-import '../../../../core/utils/strings.dart';
 import '../models/notification_list_model.dart';
 
 abstract class AddNotifListRemoteDataSource {
@@ -14,11 +13,10 @@ class AddNotifListRemoteDataSourceImpl implements AddNotifListRemoteDataSource {
   @override
   Future<void> addNotifListRemote(NotificationListModel model) async {
     try {
-      var ref = methods.readWriteNotificationList(
-        collection: Strings.notificationList,
+      var reference = methods.writeNotificationList(
         docName: model.id.toString(),
       );
-      await ref.set(model);
+      await reference.set(model);
     } catch (e) {
       throw ServerException();
     }
