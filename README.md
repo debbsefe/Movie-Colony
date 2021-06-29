@@ -20,7 +20,7 @@ And install the required dependencies
 
 Initiate code generation.
 
-`flutter pub pub run build_runner build --delete-conflicting-outputs`
+`flutter pub run build_runner build --delete-conflicting-outputs`
 
 Run the app
 

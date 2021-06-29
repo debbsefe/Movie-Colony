@@ -49,7 +49,7 @@ web/firebase-config.js
 
 
 # build runner related
-# *.freezed.dart
+*.freezed.dart
 *.g.dart
 *.mocks.dart
 *.gr.dart
