@@ -1,4 +1,4 @@
-import '../../../../../core/notifiers/generic_state_notifier.dart';
+import '../../../../core/notifiers/generic_state_notifier.dart';
 import '../../data/models/notification_list_model.dart';
 import '../../domain/usecases/add_notif_list.dart';
 
