@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/failure.dart';
@@ -7,6 +8,7 @@ import '../../domain/entities/tv_cast.dart';
 import '../../domain/repositories/tv_cast_repository.dart';
 import '../datasources/tv_cast_remote_data_source.dart';
 
+@LazySingleton(as: TvCastRepository)
 class TvCastRepositoryImpl implements TvCastRepository {
   TvCastRepositoryImpl({
     required this.remoteDataSource,

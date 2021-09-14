@@ -17,8 +17,8 @@ class TvShowOfTheWeek extends ConsumerWidget {
         loading: () => Container(),
         error: (e) => Text(e.toString()),
         loaded: (trends) {
-          var trend = trends!.first;
-          String posterImage = trend.posterImage ?? '';
+          var trend = trends?.first;
+          String posterImage = trend?.posterImage ?? '';
 
           return Column(
             mainAxisSize: MainAxisSize.max,
@@ -40,13 +40,13 @@ class TvShowOfTheWeek extends ConsumerWidget {
                       'Tv show of the week',
                       style: Theme.of(context).textTheme.headline4,
                     ),
-                    Text('About ${trend.name}',
+                    Text('About ${trend?.name ?? ''}',
                         style: Theme.of(context).textTheme.subtitle2)
                   ],
                 ),
               ),
               Text(
-                trend.overview ?? '',
+                trend?.overview ?? '',
                 style: Theme.of(context).textTheme.subtitle2,
               ),
               Padding(

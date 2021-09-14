@@ -18,7 +18,7 @@ class CategoriesWidget extends ConsumerWidget {
           return ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.only(top: 10),
-            itemCount: category!.length,
+            itemCount: category?.length,
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               return Container(
@@ -30,7 +30,7 @@ class CategoriesWidget extends ConsumerWidget {
                 width: 100,
                 child: Center(
                   child: Text(
-                    category[index].name ?? '',
+                    category?[index].name ?? '',
                     style: Theme.of(context).textTheme.caption,
                   ),
                 ),

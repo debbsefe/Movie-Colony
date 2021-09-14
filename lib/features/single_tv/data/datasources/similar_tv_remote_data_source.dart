@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/config.dart';
 import '../../../../core/error/exception.dart';
@@ -12,6 +13,7 @@ abstract class SimilarTvRemoteDataSource {
   Future<List<TvListModel>> getRemoteSimilarTv(String id);
 }
 
+@LazySingleton(as: SimilarTvRemoteDataSource)
 class SimilarTvRemoteDataSourceImpl implements SimilarTvRemoteDataSource {
   SimilarTvRemoteDataSourceImpl({required this.client, required this.config});
   final http.Client client;

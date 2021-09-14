@@ -1,7 +1,8 @@
 import 'dart:convert';
-import 'package:mockito/mockito.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matcher/matcher.dart';
+import 'package:mockito/mockito.dart';
 import 'package:movie_colony/core/error/exception.dart';
 import 'package:movie_colony/core/utils/strings.dart';
 import 'package:movie_colony/features/configuration/data/datasources/configuration_local_data_source.dart';

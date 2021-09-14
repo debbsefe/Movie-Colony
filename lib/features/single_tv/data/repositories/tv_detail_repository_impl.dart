@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/failure.dart';
@@ -7,6 +8,7 @@ import '../../domain/entities/tv_detail.dart';
 import '../../domain/repositories/tv_detail_repository.dart';
 import '../datasources/tv_detail_remote_data_source.dart';
 
+@LazySingleton(as: TvDetailRepository)
 class TvDetailRepositoryImpl implements TvDetailRepository {
   TvDetailRepositoryImpl({
     required this.remoteDataSource,

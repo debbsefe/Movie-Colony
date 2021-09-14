@@ -5,57 +5,38 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
+import 'package:movie_colony/service_locator.config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'core/cache/app_cache.dart';
-import 'core/config.dart';
-import 'core/firebase_methods.dart';
-import 'core/network/network_info.dart';
-import 'core/theme/theme.dart';
-import 'features/auth/service_locator.dart';
-import 'features/categories/service_locator.dart';
-import 'features/configuration/service_locator.dart';
-import 'features/notification/service_locator.dart';
-import 'features/single_tv/service_locator.dart';
-import 'features/trending/service_locator.dart';
 
 final sl = GetIt.instance;
 
-// ignore_for_file: cascade_invocations
-Future<void> init() async {
-  ConfigurationServiceLocator(sl).init();
-  CategoriesServiceLocator(sl).init();
-  TrendingServiceLocator(sl).init();
-  SingleTvServiceLocator(sl).init();
-  AuthServiceLocator(sl).init();
-  NotificationListServiceLocator(sl).init();
+@injectableInit
+Future<void> init(String environment) async =>
+    $initGetIt(sl, environment: environment);
 
-  ///view models/notifiers
-  sl.registerLazySingleton<CustomTheme>(
-    () => CustomTheme(sl()),
-  );
-
-  //! Core
-  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl());
-  sl.registerLazySingleton<AppCache>(() => AppCacheImpl(sl()));
-  sl.registerLazySingleton<Config>(() => ConfigImpl(sl()));
-  sl.registerLazySingleton<FirebaseMethods>(() => FirebaseMethods(
-        store: sl(),
-        auth: sl(),
-      ));
-
+@Injectable()
+@module
+abstract class ThirdPartyServicesModule {
   //! External
-  final sharedPreferences = await SharedPreferences.getInstance();
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final FirebaseAuth auth = FirebaseAuth.instance;
-  final GoogleAuthProvider authProvider = GoogleAuthProvider();
-  final GoogleSignIn googleSignIn = GoogleSignIn();
 
-  sl.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
-  sl.registerLazySingleton<FirebaseFirestore>(() => firestore);
-  sl.registerLazySingleton<FirebaseAuth>(() => auth);
-  sl.registerLazySingleton<GoogleAuthProvider>(() => authProvider);
-  sl.registerLazySingleton<GoogleSignIn>(() => googleSignIn);
+  @LazySingleton(env: [Environment.prod])
+  FirebaseFirestore get firestore => FirebaseFirestore.instance;
 
-  sl.registerLazySingleton<http.Client>(() => http.Client());
+  @LazySingleton()
+  FirebaseAuth get dio => FirebaseAuth.instance;
+
+  @LazySingleton()
+  @preResolve
+  Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
+
+  @LazySingleton()
+  GoogleSignIn get googleSignIn => GoogleSignIn();
+
+  @LazySingleton()
+  GoogleAuthProvider get googleAuthProvider => GoogleAuthProvider();
+
+  @LazySingleton()
+  // @factoryMethod
+  http.Client get client => http.Client();
 }

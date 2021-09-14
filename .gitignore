@@ -53,6 +53,8 @@ web/firebase-config.js
 *.g.dart
 *.mocks.dart
 *.gr.dart
+*.config.dart
+
 
 
 

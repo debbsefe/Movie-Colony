@@ -1,13 +1,12 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
+import 'package:matcher/matcher.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:matcher/matcher.dart';
-import 'package:http/http.dart' as http;
 import 'package:movie_colony/core/config.dart';
 import 'package:movie_colony/core/error/exception.dart';
 import 'package:movie_colony/core/utils/strings.dart';
 import 'package:movie_colony/features/categories/data/datasources/categories_remote_data_source.dart';
-// import 'package:movie_colony/features/categories/data/models/categories_model.dart';
 
 // import '../../../../data/data_reader.dart';
 import 'categories_remote_data_source_test.mocks.dart';

@@ -1,11 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../../../core/models/tv_list/tv_list.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../repositories/similar_tv_repository.dart';
 
+@LazySingleton()
 class GetSimilarTv extends UseCase<List<TvList>, Params> {
   GetSimilarTv(this.repository);
 

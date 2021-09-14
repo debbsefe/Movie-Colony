@@ -22,7 +22,7 @@ extension StringExtensions on String {
 
 extension PostFrameCallback on VoidCallback {
   void withPostFrameCallback() =>
-      WidgetsBinding.instance!.addPostFrameCallback((_) {
+      WidgetsBinding.instance?.addPostFrameCallback((_) {
         this();
       });
 }

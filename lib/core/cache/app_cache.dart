@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/strings.dart';
@@ -20,6 +21,7 @@ abstract class AppCache {
   bool? retrieveBool(String key);
 }
 
+@LazySingleton(as: AppCache)
 class AppCacheImpl implements AppCache {
   AppCacheImpl(this.pref);
 

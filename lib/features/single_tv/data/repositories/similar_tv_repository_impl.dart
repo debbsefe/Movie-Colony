@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/failure.dart';
@@ -7,6 +8,7 @@ import '../../../../core/network/network_info.dart';
 import '../../domain/repositories/similar_tv_repository.dart';
 import '../datasources/similar_tv_remote_data_source.dart';
 
+@LazySingleton(as: SimilarTvRepository)
 class SimilarTvRepositoryImpl implements SimilarTvRepository {
   SimilarTvRepositoryImpl({
     required this.remoteDataSource,

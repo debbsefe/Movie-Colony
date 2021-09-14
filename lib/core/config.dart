@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
 
 abstract class Config {
   Future<String> fetchToken(String value);
 }
 
+@LazySingleton(as: Config)
 class ConfigImpl implements Config {
   ConfigImpl(this.store);
 

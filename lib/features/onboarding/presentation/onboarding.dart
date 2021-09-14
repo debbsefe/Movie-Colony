@@ -21,7 +21,7 @@ class _OnboardingState extends State<Onboarding> {
 
   final PageController _pageController = PageController(initialPage: 0);
 
-  late Timer timer;
+  Timer? timer;
 
   AppCache prefs = di.sl<AppCache>();
 
@@ -45,7 +45,7 @@ class _OnboardingState extends State<Onboarding> {
 
   @override
   void dispose() {
-    timer.cancel();
+    timer?.cancel();
     _pageController.dispose();
     super.dispose();
   }

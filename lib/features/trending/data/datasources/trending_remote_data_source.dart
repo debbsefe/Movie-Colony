@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/config.dart';
 import '../../../../core/error/exception.dart';
@@ -13,6 +14,7 @@ abstract class TrendingRemoteDataSource {
   Future<List<TvListModel>> getRemoteTrendingDaily();
 }
 
+@LazySingleton(as: TrendingRemoteDataSource)
 class TrendingRemoteDataSourceImpl implements TrendingRemoteDataSource {
   TrendingRemoteDataSourceImpl({required this.client, required this.config});
 

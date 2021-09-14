@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/failure.dart';
@@ -7,6 +8,7 @@ import '../../domain/repositories/add_notif_list_repository.dart';
 import '../datasources/add_notif_list_remote_data_source.dart';
 import '../models/notification_list_model.dart';
 
+@LazySingleton(as: AddNotifListRepository)
 class AddNotifListRepositoryImpl implements AddNotifListRepository {
   AddNotifListRepositoryImpl({
     required this.remoteDataSource,

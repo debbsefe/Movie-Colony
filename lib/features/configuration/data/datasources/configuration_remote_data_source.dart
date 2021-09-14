@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/config.dart';
 import '../../../../core/error/exception.dart';
@@ -12,6 +13,7 @@ abstract class ConfigurationRemoteDataSource {
   Future<ConfigurationModel> getRemoteConfiguration();
 }
 
+@LazySingleton(as: ConfigurationRemoteDataSource)
 class ConfigurationRemoteDataSourceImpl
     implements ConfigurationRemoteDataSource {
   ConfigurationRemoteDataSourceImpl(

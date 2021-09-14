@@ -20,10 +20,10 @@ class TvSummary extends ConsumerWidget {
         loading: () => Container(),
         error: (e) => Text(e.toString()),
         loaded: (detail) {
-          String overview = detail!.overview ?? '';
-          var categories = detail.categories ?? [];
-          bool contain = (() {
-            return notificationList!.value.any((e) => e.id == detail.id);
+          String overview = detail?.overview ?? '';
+          var categories = detail?.categories ?? [];
+          bool? contain = (() {
+            return notificationList?.value.any((e) => e.id == detail?.id);
           })();
           return Container(
             margin: const EdgeInsets.symmetric(
@@ -75,7 +75,7 @@ class TvSummary extends ConsumerWidget {
                     );
                   }).toList(),
                 ),
-                if (!contain)
+                if (contain == null || !contain)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
                     child: CustomButton(
@@ -84,11 +84,11 @@ class TvSummary extends ConsumerWidget {
                             .read(addNotificationListProvider.notifier)
                             .addNotification(
                               NotificationListModel(
-                                id: detail.id,
-                                name: detail.name,
-                                rating: detail.rating,
-                                date: detail.startDate,
-                                posterImage: detail.posterImage,
+                                id: detail?.id,
+                                name: detail?.name,
+                                rating: detail?.rating,
+                                date: detail?.startDate,
+                                posterImage: detail?.posterImage,
                               ),
                             );
                       },

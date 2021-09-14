@@ -1,13 +1,13 @@
-import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:matcher/matcher.dart';
 import 'package:http/http.dart' as http;
+import 'package:matcher/matcher.dart';
+import 'package:mockito/mockito.dart';
 import 'package:movie_colony/core/config.dart';
 import 'package:movie_colony/core/error/exception.dart';
+import 'package:movie_colony/core/utils/extensions.dart';
 import 'package:movie_colony/core/utils/strings.dart';
 import 'package:movie_colony/features/single_tv/data/datasources/tv_detail_remote_data_source.dart';
 import 'package:movie_colony/features/single_tv/data/models/tv_detail_model.dart';
-import 'package:movie_colony/core/utils/extensions.dart';
 
 import '../../../../data/data_reader.dart';
 import '../../../../data/single_tv/constants.dart';

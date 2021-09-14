@@ -9,4 +9,8 @@ analyzer:
     omit_local_variable_types: ignore
   exclude:
     - "**/*.g.dart"
+    - "**/*.gr.dart"
     - "**/*.freezed.dart"
+    - "**/*.mocks.dart"
+    - "**/*.mocks.dart"
+    - "**/*.config.dart"

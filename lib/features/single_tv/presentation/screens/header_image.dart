@@ -20,8 +20,8 @@ class HeaderImage extends ConsumerWidget {
         loading: () => Height(MediaQuery.of(context).size.height * 0.55),
         error: (e) => Text(e.toString()),
         loaded: (detail) {
-          String posterImage = detail!.posterImage ?? '';
-          String name = detail.name ?? '';
+          String posterImage = detail?.posterImage ?? '';
+          String name = detail?.name ?? '';
 
           return Column(
             children: [
@@ -52,7 +52,7 @@ class HeaderImage extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              yearFromDateString(detail.startDate),
+                              yearFromDateString(detail?.startDate),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyText1
@@ -61,7 +61,7 @@ class HeaderImage extends ConsumerWidget {
                             const Width(10),
                             Text(
                               fetchSeason(
-                                detail.seasons,
+                                detail?.seasons,
                               ),
                               style: Theme.of(context)
                                   .textTheme
@@ -83,7 +83,7 @@ class HeaderImage extends ConsumerWidget {
                             ),
                             const Width(5),
                             Text(
-                              detail.rating.toString(),
+                              detail?.rating.toString() ?? '',
                               style: Theme.of(context).textTheme.headline4,
                             ),
                           ],

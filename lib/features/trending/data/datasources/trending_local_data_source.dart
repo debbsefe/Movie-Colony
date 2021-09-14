@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/error/exception.dart';
@@ -19,6 +20,7 @@ abstract class TrendingLocalDataSource {
   Future<void> cacheLastTrendingWeekly(List<TvListModel> trendingModel);
 }
 
+@LazySingleton(as: TrendingLocalDataSource)
 class TrendingLocalDataSourceImpl implements TrendingLocalDataSource {
   TrendingLocalDataSourceImpl(this.sharedPreferences);
 

@@ -1,3 +1,5 @@
+import 'package:injectable/injectable.dart';
+
 import '../../../../core/error/exception.dart';
 import '../../../../core/firebase_methods.dart';
 import '../models/notification_list_model.dart';
@@ -6,6 +8,7 @@ abstract class AddNotifListRemoteDataSource {
   Future<void> addNotifListRemote(NotificationListModel model);
 }
 
+@LazySingleton(as: AddNotifListRemoteDataSource)
 class AddNotifListRemoteDataSourceImpl implements AddNotifListRemoteDataSource {
   AddNotifListRemoteDataSourceImpl({required this.methods});
   final FirebaseMethods methods;

@@ -42,8 +42,16 @@
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     
     //create firebase-config.js to add your firebase secrets 
-    import { firebaseConfig } from './firebase-config.js';
-
+    //import { firebaseConfig } from './firebase-config.js';
+    const  firebaseConfig = {
+    apiKey: "AIzaSyDfkK4HIlf4eyYnJ4zmosRDqb3O8QoQaes",
+  authDomain: "movie-colony.firebaseapp.com",
+  projectId: "movie-colony",
+  storageBucket: "movie-colony.appspot.com",
+  messagingSenderId: "969286226397",
+  appId: "1:969286226397:web:8e081294d836de292a6634",
+  measurementId: "G-6S3WSH6PSD"
+  };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();

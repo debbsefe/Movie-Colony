@@ -1,8 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:movie_colony/core/usecases/usecase.dart';
-
 import 'package:mockito/mockito.dart';
+import 'package:movie_colony/core/usecases/usecase.dart';
 import 'package:movie_colony/features/trending/domain/repositories/trending_repository.dart';
 import 'package:movie_colony/features/trending/domain/usecases/get_trending_weekly.dart';
 

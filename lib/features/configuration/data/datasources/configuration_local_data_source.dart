@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/error/exception.dart';
@@ -15,6 +16,7 @@ abstract class ConfigurationLocalDataSource {
   Future<void> cacheLastConfiguration(ConfigurationModel configurationModel);
 }
 
+@LazySingleton(as: ConfigurationLocalDataSource)
 class ConfigurationLocalDataSourceImpl implements ConfigurationLocalDataSource {
   ConfigurationLocalDataSourceImpl(this.sharedPreferences);
 

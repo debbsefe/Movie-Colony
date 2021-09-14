@@ -2,19 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:injectable/injectable.dart';
 
 import 'app_router.gr.dart';
 import 'core/cache/app_cache.dart';
 import 'core/utils/strings.dart';
 import 'providers.dart';
-import 'service_locator.dart' as di;
+import 'service_locator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
   //initialize dependency injection
-  await di.init();
+  await init(Environment.prod);
 
   runApp(
     ProviderScope(
@@ -28,7 +29,7 @@ class MovieColony extends ConsumerWidget {
     Key? key,
   }) : super(key: key);
 
-  final AppCache prefs = di.sl<AppCache>();
+  final AppCache prefs = sl<AppCache>();
   final _appRouter = AppRouter();
 
   @override

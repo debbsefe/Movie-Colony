@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:injectable/injectable.dart';
 
 import '../cache/app_cache.dart';
 import '../utils/strings.dart';
 
+@LazySingleton()
 class CustomTheme extends StateNotifier<ThemeData> {
   CustomTheme(this.appCache)
       : super(

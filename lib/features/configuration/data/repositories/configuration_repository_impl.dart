@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/cache/app_cache.dart';
 import '../../../../core/error/exception.dart';
@@ -10,6 +11,7 @@ import '../../domain/repositories/configuration_repository.dart';
 import '../datasources/configuration_local_data_source.dart';
 import '../datasources/configuration_remote_data_source.dart';
 
+@LazySingleton(as: ConfigurationRepository)
 class ConfigurationRepositoryImpl implements ConfigurationRepository {
   ConfigurationRepositoryImpl({
     required this.cache,

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/failure.dart';
@@ -11,6 +12,7 @@ import '../datasources/trending_remote_data_source.dart';
 
 enum TimeWindow { weekly, daily }
 
+@LazySingleton(as: TrendingRepository)
 class TrendingRepositoryImpl implements TrendingRepository {
   TrendingRepositoryImpl({
     required this.remoteDataSource,

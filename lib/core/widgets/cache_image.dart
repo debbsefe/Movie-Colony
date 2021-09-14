@@ -42,8 +42,6 @@ class CachedImage extends StatelessWidget {
             )),
       );
     } catch (e) {
-      // ignore: avoid_print
-      print(e);
       return Image.network(
         Strings.noImageAvailable,
         height: 25,

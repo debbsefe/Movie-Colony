@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/exception.dart';
 import '../../../../core/firebase_methods.dart';
@@ -8,6 +9,7 @@ abstract class NotifListRemoteDataSource {
   Stream<List<NotificationListModel>> notifListRemote();
 }
 
+@LazySingleton(as: NotifListRemoteDataSource)
 class NotifListRemoteDataSourceImpl implements NotifListRemoteDataSource {
   NotifListRemoteDataSourceImpl({required this.methods});
   final FirebaseMethods methods;

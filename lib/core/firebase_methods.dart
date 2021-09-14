@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 
 import '../features/notification/data/models/notification_list_model.dart';
 import 'utils/strings.dart';
 
+@LazySingleton()
 class FirebaseMethods {
   FirebaseMethods({required this.store, required this.auth});
 

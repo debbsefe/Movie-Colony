@@ -24,7 +24,7 @@ class _SingleTvDetailState extends State<SingleTvDetail> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
       _callProviders();
     });
   }

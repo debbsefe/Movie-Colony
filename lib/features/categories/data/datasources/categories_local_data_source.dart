@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/error/exception.dart';
@@ -15,6 +16,7 @@ abstract class CategoriesLocalDataSource {
   Future<void> cacheLastCategory(List<CategoriesModel> categoriesModel);
 }
 
+@LazySingleton(as: CategoriesLocalDataSource)
 class CategoriesLocalDataSourceImpl implements CategoriesLocalDataSource {
   CategoriesLocalDataSourceImpl(this.sharedPreferences);
 

@@ -1,7 +1,10 @@
+import 'package:injectable/injectable.dart';
+
 import '../../../../core/notifiers/generic_state_notifier.dart';
 import '../../data/models/notification_list_model.dart';
 import '../../domain/usecases/add_notif_list.dart';
 
+@LazySingleton()
 class AddNotifListNotifier extends GenericStateNotifier<void> {
   AddNotifListNotifier(this.addNotifList);
 
