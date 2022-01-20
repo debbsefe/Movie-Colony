@@ -8,8 +8,8 @@ class CategoriesWidget extends ConsumerWidget {
   const CategoriesWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final categories = watch(categoriesProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final categories = ref.watch(categoriesProvider);
     return categories.when(
         initial: () => Container(),
         loading: () => Container(),

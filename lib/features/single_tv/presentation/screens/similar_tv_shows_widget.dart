@@ -10,9 +10,9 @@ class SimilarTvShowsWidget extends ConsumerWidget {
   const SimilarTvShowsWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final similarTV = watch(similarTvProvider);
-    var url = watch(configurationProvider.notifier).fetchPosterSizeUrl();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final similarTV = ref.watch(similarTvProvider);
+    var url = ref.watch(configurationProvider.notifier).fetchPosterSizeUrl();
 
     return similarTV.when(
         initial: () => Container(),

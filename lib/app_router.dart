@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 
 import 'features/auth/presentation/screens/signup_page.dart';

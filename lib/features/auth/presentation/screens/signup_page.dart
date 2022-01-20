@@ -5,21 +5,21 @@ import '../../../../core/notifiers/generic_state.dart';
 import '../../../../core/widgets/snackbars.dart';
 import '../../../../providers.dart';
 
-class SignUpPage extends StatefulWidget {
+class SignUpPage extends ConsumerStatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
 
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> with CustomSnackbar {
+class _SignUpPageState extends ConsumerState<SignUpPage> with CustomSnackbar {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return ProviderListener(
         provider: googleSignInProvider,
-        onChange: (context, GenericState<void> change) {
+        onChange: (context, GenericState<void>? change, _) {
           if (change is Error<void>) {
             showErrorSnackBar(_scaffoldKey, change.message);
           }
@@ -62,7 +62,7 @@ class _SignUpPageState extends State<SignUpPage> with CustomSnackbar {
                     onPressed: () async {
                       // await FirebaseAuth.instance.signOut();
 
-                      context
+                      ref
                           .read(anonymousSignInProvider.notifier)
                           .signInAnonymous();
                     },
@@ -77,12 +77,12 @@ class _SignUpPageState extends State<SignUpPage> with CustomSnackbar {
 }
 
 // ignore: use_key_in_widget_constructors
-class GoogleSignInButton extends StatefulWidget {
+class GoogleSignInButton extends ConsumerStatefulWidget {
   @override
   _GoogleSignInButtonState createState() => _GoogleSignInButtonState();
 }
 
-class _GoogleSignInButtonState extends State<GoogleSignInButton> {
+class _GoogleSignInButtonState extends ConsumerState<GoogleSignInButton> {
   bool _isSigningIn = false;
 
   @override
@@ -107,7 +107,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                   _isSigningIn = true;
                 });
 
-                context.read(googleSignInProvider.notifier).signInWithGoogle();
+                ref.read(googleSignInProvider.notifier).signInWithGoogle();
               },
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),

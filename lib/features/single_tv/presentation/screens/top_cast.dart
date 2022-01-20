@@ -10,10 +10,10 @@ class TopCast extends ConsumerWidget {
   const TopCast({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    var url = watch(configurationProvider.notifier).fetchProfileSizeUrl();
+  Widget build(BuildContext context, WidgetRef ref) {
+    var url = ref.watch(configurationProvider.notifier).fetchProfileSizeUrl();
 
-    final tvCast = watch(tvCastProvider);
+    final tvCast = ref.watch(tvCastProvider);
 
     return tvCast.when(
         initial: () => Container(),

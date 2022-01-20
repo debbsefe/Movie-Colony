@@ -11,9 +11,9 @@ class TvSummary extends ConsumerWidget {
   const TvSummary({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final tvDetail = watch(tvDetailProvider);
-    final notificationList = watch(notifListStreamProvider).data;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tvDetail = ref.watch(tvDetailProvider);
+    final notificationList = ref.watch(notifListStreamProvider).asData;
 
     return tvDetail.when(
         initial: () => Container(),
@@ -80,7 +80,7 @@ class TvSummary extends ConsumerWidget {
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 10),
                     child: CustomButton(
                       onPressed: () {
-                        context
+                        ref
                             .read(addNotificationListProvider.notifier)
                             .addNotification(
                               NotificationListModel(

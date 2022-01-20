@@ -12,9 +12,9 @@ class TrendingWidget extends ConsumerWidget {
   const TrendingWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final trending = watch(dailyTrendingProvider);
-    var url = watch(configurationProvider.notifier).fetchPosterSizeUrl();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final trending = ref.watch(dailyTrendingProvider);
+    var url = ref.watch(configurationProvider.notifier).fetchPosterSizeUrl();
 
     return trending.when(
         initial: () => Container(),

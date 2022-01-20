@@ -8,9 +8,9 @@ class TvShowOfTheWeek extends ConsumerWidget {
   const TvShowOfTheWeek({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final trending = watch(weeklyTrendingProvider);
-    var url = watch(configurationProvider.notifier).fetchPosterSizeUrl();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final trending = ref.watch(weeklyTrendingProvider);
+    var url = ref.watch(configurationProvider.notifier).fetchPosterSizeUrl();
 
     return trending.when(
         initial: () => Container(),

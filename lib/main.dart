@@ -33,11 +33,11 @@ class MovieColony extends ConsumerWidget {
   final _appRouter = AppRouter();
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final theme = watch(themeProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(themeProvider);
 
     var isFirstTime = prefs.retrieveBool(Strings.firstTimeUser);
-    var user = watch(userChangesProvider).data?.value;
+    var user = ref.watch(userChangesProvider).data?.value;
 
     return MaterialApp.router(
         debugShowCheckedModeBanner: false,

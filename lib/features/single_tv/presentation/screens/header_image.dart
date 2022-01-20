@@ -11,9 +11,9 @@ class HeaderImage extends ConsumerWidget {
   const HeaderImage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final tvDetail = watch(tvDetailProvider);
-    var url = watch(configurationProvider.notifier).fetchPosterSizeUrl();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tvDetail = ref.watch(tvDetailProvider);
+    var url = ref.watch(configurationProvider.notifier).fetchPosterSizeUrl();
 
     return tvDetail.when(
         initial: () => Height(MediaQuery.of(context).size.height * 0.55),

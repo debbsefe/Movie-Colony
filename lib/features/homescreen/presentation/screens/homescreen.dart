@@ -6,14 +6,14 @@ import '../widgets/categories_widget.dart';
 import '../widgets/trending_widget.dart';
 import '../widgets/tvshow_week.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void initState() {
     super.initState();
@@ -23,10 +23,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _callProviders() {
-    context.read(weeklyTrendingProvider.notifier).fetchTrending();
-    context.read(dailyTrendingProvider.notifier).fetchTrending();
-    context.read(categoriesProvider.notifier).fetchCategory();
-    context.read(configurationProvider.notifier).fetchConfiguration();
+    ref.read(weeklyTrendingProvider.notifier).fetchTrending();
+    ref.read(dailyTrendingProvider.notifier).fetchTrending();
+    ref.read(categoriesProvider.notifier).fetchCategory();
+    ref.read(configurationProvider.notifier).fetchConfiguration();
   }
 
   @override

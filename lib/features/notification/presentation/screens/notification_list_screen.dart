@@ -10,9 +10,9 @@ class NotificationListScreen extends ConsumerWidget {
   const NotificationListScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final notificationList = watch(notifListStreamProvider);
-    var url = watch(configurationProvider.notifier).fetchPosterSizeUrl();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final notificationList = ref.watch(notifListStreamProvider);
+    var url = ref.watch(configurationProvider.notifier).fetchPosterSizeUrl();
 
     return notificationList.when(
         loading: () => Container(),
